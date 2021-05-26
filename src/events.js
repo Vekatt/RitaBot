@@ -161,7 +161,21 @@ exports.listen = function listen (client)
             if (!message.author.bot)
             {
 
-               console.log(`${message.guild.name} - ${message.guild.id} - ${message.createdAt}`);
+               // console.log(`${auth.messagedebug}`);
+               // console.log(`${process.env.MESSAGE_DEBUG}`);
+
+               if (auth.messagedebug === "1")
+               {
+
+                  console.log(`${message.guild.name} - ${message.guild.id} - ${message.createdAt} \n----------------------------------------\nDEBUG: Messsage User - ${message.author.tag} \nDEBUG: Messsage Content - ${message.content}\n----------------------------------------`);
+
+               }
+               if (auth.messagedebug !== "1")
+               {
+
+                  console.log(`${message.guild.name} - ${message.guild.id} - ${message.createdAt}`);
+
+               }
                const col = "message";
                let id = "bot";
                db.increaseStatsCount(col, id);
